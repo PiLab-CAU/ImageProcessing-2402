@@ -85,8 +85,8 @@ def visualize_vqreconstruction(images, labels, reconstructed_images, dataset):
 
     """
     # Convert tensors to numpy arrays for visualization
-    images = images.cpu().numpy()  # 원본 이미지를 numpy로 변환
-    reconstructed_images = reconstructed_images.detach().cpu().numpy()  # `detach()` 후 numpy로 변환
+    images = images.cpu().numpy()
+    reconstructed_images = reconstructed_images.detach().cpu().numpy()
     
     # Clip values to [0, 1] for visualization
     images = np.clip(images, 0, 1)
@@ -120,8 +120,8 @@ def visualize_vqtsne(images, labels, reconstructed_images, dataset):
     - dataset: the dataset object containing class names. Used to map label indices to class names for visualization.
 
     """
-    images = images.view(images.size(0), -1).cpu().numpy()  # 원본 이미지 flatten
-    reconstructed_images = reconstructed_images.view(reconstructed_images.size(0), -1).cpu().numpy()  # 재구성된 이미지 flatten
+    images = images.view(images.size(0), -1).cpu().numpy()  # flatten original image
+    reconstructed_images = reconstructed_images.view(reconstructed_images.size(0), -1).cpu().numpy()  # flatten reconstructed image
 
     # Concatenate original and reconstructed images
     combined_data = np.concatenate([images, reconstructed_images], axis=0)
